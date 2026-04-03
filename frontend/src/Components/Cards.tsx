@@ -13,7 +13,7 @@ function getYouTubeEmbedUrl(url: string) {
 
 export function Card({ title, link, type }: CardProps) {
   return (
-    <div className="p-8 bg-white rounded-md border-gray-200 max-w-96 border min-h-48 min-w-72">
+    <div className="p-4 bg-white rounded-md border-gray-200 max-w-72 max-h-72 overflow-y-auto min-h-48 min-w-72 border ">
       <div className="flex justify-between">
         <div className="flex items-center text-md">
           <div className="text-gray-500 pr-2">
@@ -33,12 +33,12 @@ export function Card({ title, link, type }: CardProps) {
         </div>
       </div>
 
-      <div className="pt-4  w-full">
+      <div className="pt-4 ">
         {type === "youtube" && (
           <iframe
-            className="w-full h-full"
-            width="560"
-            height="315"
+            className="aspect-video w-full rounded-md"
+            width="70"
+            height="185"
             src={getYouTubeEmbedUrl(link)}
             title="YouTube video player"
             frameBorder="0"
@@ -48,7 +48,7 @@ export function Card({ title, link, type }: CardProps) {
           ></iframe>
         )}
         {type === "twitter" && (
-          <blockquote className="twitter-tweet">
+          <blockquote className="twitter-tweet max-h-48">
             <a href={link.replace("x.com", "twitter.com")}></a>
           </blockquote>
         )}
