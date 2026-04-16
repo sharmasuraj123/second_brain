@@ -3,7 +3,7 @@ import type { ReactElement } from "react";
 interface ButtonProps {
   varient: "primary" | "secondary";
   text: string;
-  startIcon: ReactElement;
+  startIcon?: ReactElement;
   onClick?: () => void;
   fullWidth?: boolean;
   loading?: boolean;

@@ -22,7 +22,9 @@ const signupSchema = z.object({
 export const signUp = async (req: Request, res: Response) => {
   const result = signupSchema.safeParse(req.body);
   if (!result.success) {
-    return res.status(400).json(result.error);
+    return res
+      .status(400)
+      .json({ message: "Invalid input", errors: result.error });
   }
   const { userName, password } = result.data;
 
@@ -34,7 +36,7 @@ export const signUp = async (req: Request, res: Response) => {
     const existingUser = await userModel.findOne({ userName });
 
     if (existingUser) {
-      return res.status(411).json({
+      return res.json({
         message: "Username already exists",
       });
     }
@@ -61,15 +63,12 @@ export const signIn = async (req: Request, res: Response) => {
   if (!user) {
     return res.status(404).json("user not found");
   }
-  console.log(user);
+
   const decodedUser = await bcrypt.compare(password, user.password);
   if (!decodedUser) {
     return res.status(401).json("Incorrect password.");
   }
-  const token = jwt.sign(
-    { id: user._id },
-    process.env.JWT_SECRET as string,
-  );
+  const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET as string);
 
   return res.status(200).json({ message: "Login successful", token });
 };

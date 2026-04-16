@@ -4,10 +4,6 @@ dotenv.config();
 import jwt from "jsonwebtoken";
 import { de } from "zod/locales";
 
-// interface AuthRequest extends Request {
-//   userId?: string;
-// }
-
 export const userMiddleware = async (
   req: Request,
   res: Response,

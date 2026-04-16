@@ -1,18 +1,17 @@
-
-export function Input({
-  placeholder,
-  onChange,
-}: {
+interface InputProps {
   placeholder: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-}) {
+  reference?: React.Ref<HTMLInputElement>;
+  type?:string
+}
+
+export function Input({ placeholder, reference,type }: InputProps) {
   return (
     <div>
       <input
+        ref={reference}
         className="px-4 py-2 m-2 rounded border"
-        type={"text"}
+        type={type}
         placeholder={placeholder}
-        onChange={onChange}
       ></input>
     </div>
   );
