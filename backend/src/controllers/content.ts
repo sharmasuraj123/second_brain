@@ -1,7 +1,6 @@
 import express, { type Request, type Response } from "express";
 import { contentModel } from "../dbSchema.js";
 import mongoose from "mongoose";
-import { userInfo } from "node:os";
 
 export const AddContent = async (req: Request, res: Response) => {
   try {

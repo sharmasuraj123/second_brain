@@ -16,12 +16,14 @@ enum ContentType {
   Twitter = "twitter",
   Link = "link",
   Document = "document",
+  Linkdin = "Linkdin",
+  
 }
 
 export function CreateContentModal({ open, onClose }: ContentModalProps) {
   const titleRef = useRef<HTMLInputElement>(null);
   const linkRef = useRef<HTMLInputElement>(null);
-  const [type, setType] = useState<ContentType>(ContentType.Youtube);
+const [type, setType] = useState<ContentType>(ContentType.Youtube);
 
   async function addContent() {
     const title = titleRef.current?.value;
@@ -75,6 +77,8 @@ export function CreateContentModal({ open, onClose }: ContentModalProps) {
                   <option value={ContentType.Youtube}>YouTube</option>
                   <option value={ContentType.Twitter}>Twitter</option>
                   <option value={ContentType.Link}>Link</option>
+                  <option value={ContentType.Linkdin}>Linkdin</option>
+                  <option value={ContentType.Document}>Document</option>
                 </select>
               </div>
               <div className="flex justify-center">

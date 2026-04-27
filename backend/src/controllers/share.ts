@@ -3,8 +3,6 @@ import { contentModel, linkModel, userModel } from "../dbSchema.js";
 import mongoose from "mongoose";
 import { random } from "../utils.js";
 
-
-
 export const brainShare = async (req: Request, res: Response) => {
   try {
     const share = req.body.share;
@@ -23,8 +21,8 @@ export const brainShare = async (req: Request, res: Response) => {
       );
 
       return res.json({
-          message: "/share/" + hash,
-          hash:hash
+        message: "/share/" + hash,
+        hash: hash,
       });
     } else {
       await linkModel.deleteOne({
@@ -52,7 +50,7 @@ export const shareableLink = async (req: Request, res: Response) => {
       });
     }
 
-    const link = await linkModel.findOne({ hash }).lean(); 
+    const link = await linkModel.findOne({ hash }).lean();
     console.log("Found link:", link);
     if (!link) {
       return res.status(404).json({
@@ -86,5 +84,20 @@ export const shareableLink = async (req: Request, res: Response) => {
     return res.status(500).json({
       message: "Internal server error",
     });
+  }
+};
+
+export const cardContentShare = async (req: Request, res: Response) => {
+  try {
+    const contentId = req.params.contentId;
+    const content = await contentModel.findOne({ _id: contentId });
+
+    if (!content) {
+      return res.status(404).json({ message: "Link not found" });
+    }
+
+    return res.json({ link: content.link });
+  } catch (e) {
+    res.status(400).json({ message: "Invalid Link ID" });
   }
 };

@@ -11,7 +11,7 @@ const titleSchema = new Schema({
 });
 export const titleModel = mongoose.model("Title", titleSchema);
 
-const contentTypes = ["youtube", "twitter", "link", "document"];
+const contentTypes = ["twitter", "youtube", "linkedin", "link", "document"];
 const contentSchema = new Schema({
   link: { type: String, required: true },
   type: { type: String, enum: contentTypes, required: true },
