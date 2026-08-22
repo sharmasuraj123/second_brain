@@ -1,0 +1,70 @@
+import * as z from "zod";
+import { userModel } from "../dbSchema.js";
+import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
+import dotenv from "dotenv";
+dotenv.config();
+
+const signupSchema = z.object({
+  userName: z.string().min(3, "Username must be at least 3 chars"),
+  password: z
+    .string()
+    .min(8, "Password must be at least 8 characters long")
+    .refine((val) => /[!@#$%^&*]/.test(val), {
+      message:
+        "Password must contain at least one special character (!@#$%^&*)",
+    }),
+});
+
+export const signUp = async (req, res) => {
+  const result = signupSchema.safeParse(req.body);
+  if (!result.success) {
+    return res
+      .status(400)
+      .json({ message: "Invalid input", errors: result.error });
+  }
+  const { userName, password } = result.data;
+
+  try {
+    const salt = 5;
+    const hashedPass = await bcrypt.hash(password, salt);
+
+    const existingUser = await userModel.findOne({ userName });
+
+    if (existingUser) {
+      return res.json({
+        message: "Username already exists",
+      });
+    }
+
+    const newUser = await userModel.create({
+      userName: userName,
+      password: hashedPass,
+    });
+
+    return res.status(201).json({
+      message: "User created successfully",
+      user: newUser,
+    });
+  } catch (e) {
+    res.json("errror in singUp");
+  }
+};
+
+export const signIn = async (req, res) => {
+  const { userName, password } = req.body;
+  const user = await userModel.findOne({
+    userName,
+  });
+  if (!user) {
+    return res.status(404).json("user not found");
+  }
+
+  const decodedUser = await bcrypt.compare(password, user.password);
+  if (!decodedUser) {
+    return res.status(401).json("Incorrect password.");
+  }
+  const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
+
+  return res.status(200).json({ message: "Login successful", token });
+};
