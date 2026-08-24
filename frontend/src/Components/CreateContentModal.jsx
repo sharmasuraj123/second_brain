@@ -11,7 +11,7 @@ const ContentType = {
   Twitter: "twitter",
   Link: "link",
   Document: "document",
-  Linkdin: "Linkdin",
+  Linkedin: "linkdin",
 };
 
 export function CreateContentModal({ open, onClose }) {
@@ -71,7 +71,7 @@ export function CreateContentModal({ open, onClose }) {
                   <option value={ContentType.Youtube}>YouTube</option>
                   <option value={ContentType.Twitter}>Twitter</option>
                   <option value={ContentType.Link}>Link</option>
-                  <option value={ContentType.Linkdin}>Linkdin</option>
+                  <option value={ContentType.Linkedin}>LinkedIn</option>
                   <option value={ContentType.Document}>Document</option>
                 </select>
               </div>

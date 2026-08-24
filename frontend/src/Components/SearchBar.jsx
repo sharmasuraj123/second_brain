@@ -1,13 +1,7 @@
-export function SearchBar({
-  query,
-  setQuery,
-  resultsCount,
-  totalCount,
-}) {
+export function SearchBar({ query, setQuery, resultsCount, totalCount }) {
   return (
     <div className="relative w-full max-w-md">
       <div className="flex items-center border border-gray-300 rounded-lg bg-white px-3 py-2 shadow-sm focus-within:ring-2 focus-within:ring-purple-500 focus-within:border-transparent">
-        {/* Search Icon */}
         <svg
           className="w-4 h-4 text-gray-400 mr-2 shrink-0"
           fill="none"
@@ -30,7 +24,6 @@ export function SearchBar({
           className="flex-1 outline-none text-sm text-gray-700 placeholder-gray-400 bg-transparent"
         />
 
-        {/* Clear button */}
         {query && (
           <button
             onClick={() => setQuery("")}
@@ -41,7 +34,6 @@ export function SearchBar({
         )}
       </div>
 
-      {/* Results count */}
       {query && (
         <p className="text-xs text-gray-400 mt-1 ml-1">
           {resultsCount === 0

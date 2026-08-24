@@ -1,5 +1,7 @@
 import express from "express";
 import cors from "cors";
+import dotenv from "dotenv";
+dotenv.config();
 const app = express();
 import connectDB from "./config/dbConnection.js";
 import authRouter from "./routes/authRoute.js";
@@ -22,6 +24,8 @@ app.use("/api/v1/brainsharelink", shareLinkRoute);
 app.use("/api/v1/contentShare", userMiddleware, shareCardRoute);
 app.use("/api/v1/user", userMiddleware, userRouter);
 
-app.listen(8000, () => {
-  console.log("Server running on 8000");
+const PORT = process.env.PORT || 8000;
+
+app.listen(PORT, () => {
+  console.log(`Server running on ${PORT}`);
 });

@@ -1,6 +1,7 @@
+
 import { DeleteIcon } from "../icons/DeleteIcon";
 import axios from "axios";
-import SharelinkIcon from "../icons/shareLinkIcon";
+import SharelinkIcon from "../icons/ShareLinkicon";
 
 const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
@@ -22,20 +23,16 @@ export function Card({
 }) {
   async function handleDelete() {
     if (!deleteAllowed) return; 
-    if (deleteAllowed) {
-      const confirmed = window.confirm(
-        `Are you sure you want to delete "${title}"?`,
-      );
-      if (!confirmed) return;
-    }
+    const confirmed = window.confirm(
+      `Are you sure you want to delete "${title}"?`,
+    );
+    if (!confirmed) return;
 
     try {
-      if (deleteAllowed) {
-        await axios.delete(`${backendUrl}/api/v1/content/delete`, {
-          headers: { Authorization: localStorage.getItem("token") },
-          data: { contentId },
-        });
-      }
+      await axios.delete(`${backendUrl}/api/v1/content/delete`, {
+        headers: { Authorization: localStorage.getItem("token") },
+        data: { contentId },
+      });
     } catch (err) {
       alert("Failed to delete content. Please try again.");
     }

@@ -17,7 +17,7 @@ export function SideBar() {
       <div className="flex-1">
         <div
           className="text-2xl flex pt-8 items-center cursor-pointer"
-          onClick={() => navigate("/dashboard")}
+          onClick={() => navigate("/Dashboard")}
         >
           <div className="pr-2">
             <BrainlyIcon currentColor={"#9f50d3"} />
@@ -27,19 +27,19 @@ export function SideBar() {
 
         <div className="pt-8 pl-4 flex flex-col gap-2">
           <div
-            onClick={() => navigate("/dashboard")}
+            onClick={() => navigate("/Dashboard")}
             className="cursor-pointer"
           >
             <SideBarItem text="All Content" icon={<AllIcon />} />
           </div>
           <div
-            onClick={() => navigate("/dashboard/twitter")}
+            onClick={() => navigate("/Dashboard/twitter")}
             className="cursor-pointer"
           >
             <SideBarItem text="Twitter" icon={<TwitterIcon />} />
           </div>
           <div
-            onClick={() => navigate("/dashboard/youtube")}
+            onClick={() => navigate("/Dashboard/youtube")}
             className="cursor-pointer"
           >
             <SideBarItem
@@ -48,19 +48,19 @@ export function SideBar() {
             />
           </div>
           <div
-            onClick={() => navigate("/dashboard/linkedin")}
+            onClick={() => navigate("/Dashboard/linkedin")}
             className="cursor-pointer"
           >
             <SideBarItem text="Linkedin" icon={<LinkedinIcon />} />
           </div>
           <div
-            onClick={() => navigate("/dashboard/link")}
+            onClick={() => navigate("/Dashboard/link")}
             className="cursor-pointer"
           >
             <SideBarItem text="Links" icon={<LinkIcon />} />
           </div>
           <div
-            onClick={() => navigate("/dashboard/document")}
+            onClick={() => navigate("/Dashboard/document")}
             className="cursor-pointer"
           >
             <SideBarItem text="Documents" icon={<DocumentIcon />} />

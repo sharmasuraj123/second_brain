@@ -2,26 +2,22 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { Card } from "../Components/Cards";
-import { useContent } from "../hooks/useContent";
 
 const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
 export function SharedBrain() {
   const { hash } = useParams();
   const [username, setUsername] = useState("");
+  const [contents, setContents] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-  const { contents, refresh } = useContent();
-
-  useEffect(() => {
-    refresh();
-  }, [refresh]);
 
   useEffect(() => {
     axios
       .get(`${backendUrl}/api/v1/brainsharelink/${hash}`)
       .then((res) => {
         setUsername(res.data.userName);
+        setContents(Array.isArray(res.data.content) ? res.data.content : []);
       })
       .catch(() => {
         setError("This shared brain link is invalid or has been removed.");
@@ -48,6 +44,11 @@ export function SharedBrain() {
         {username}'s Second Brain
       </h1>
       <div className="flex gap-4 flex-wrap">
+        {contents.length === 0 && (
+          <p className="text-gray-500 w-full text-center mt-10">
+            This brain has no shared content yet.
+          </p>
+        )}
         {contents.map((item) => (
           <Card
             key={item._id}
@@ -55,7 +56,6 @@ export function SharedBrain() {
             link={item.link}
             type={item.type}
             contentId={item._id}
-            onDelete={refresh}
             deleteAllowed={false}
           />
         ))}

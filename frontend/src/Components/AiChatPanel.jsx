@@ -60,7 +60,6 @@ export function AiChatPanel({ contents, isOpen, onClose }) {
 
   return (
     <div className="fixed right-0 top-0 h-full w-96 bg-white shadow-2xl border-l border-gray-200 flex flex-col z-50">
-      {/* Header */}
       <div className="flex items-center justify-between px-4 py-3 bg-purple-600 text-white">
         <div className="flex items-center gap-2">
           <span className="text-lg">🧠</span>
@@ -79,7 +78,6 @@ export function AiChatPanel({ contents, isOpen, onClose }) {
         </button>
       </div>
 
-      {/* Messages */}
       <div className="flex-1 overflow-y-auto p-4 space-y-3">
         {messages.length === 0 && (
           <div className="text-center text-gray-400 mt-10 space-y-2">
@@ -143,7 +141,6 @@ export function AiChatPanel({ contents, isOpen, onClose }) {
         <div ref={bottomRef} />
       </div>
 
-      {/* Input */}
       <div className="p-3 border-t border-gray-200">
         <div className="flex items-center gap-2 border border-gray-300 rounded-xl px-3 py-2 focus-within:ring-2 focus-within:ring-purple-500">
           <input
