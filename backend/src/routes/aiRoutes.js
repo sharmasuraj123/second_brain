@@ -102,7 +102,7 @@ IMPORTANT RULES:
 - When referencing a card, mention its title and type`;
 
     const response = await groq.chat.completions.create({
-      model: "llama-3.3-70b-versatile",
+      model: "openai/gpt-oss-120b",
       max_tokens: 1024,
       messages: [
         { role: "system", content: systemPrompt },

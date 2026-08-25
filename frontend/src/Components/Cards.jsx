@@ -1,4 +1,3 @@
-
 import { DeleteIcon } from "../icons/DeleteIcon";
 import axios from "axios";
 import SharelinkIcon from "../icons/ShareLinkicon";
@@ -14,15 +13,9 @@ function getYouTubeEmbedUrl(url) {
   }
 }
 
-export function Card({
-  title,
-  link,
-  type,
-  contentId,
-  deleteAllowed,
-}) {
+export function Card({ title, link, type, contentId, deleteAllowed }) {
   async function handleDelete() {
-    if (!deleteAllowed) return; 
+    if (!deleteAllowed) return;
     const confirmed = window.confirm(
       `Are you sure you want to delete "${title}"?`,
     );
@@ -59,13 +52,13 @@ export function Card({
   }
 
   return (
-    <div className="p-4 bg-white rounded-md border-gray-200 max-w-72 min-h-48 min-w-72 border overflow-y-auto max-h-72">
+    <div className="p-4 bg-dark-surface rounded-md border border-dark-border max-w-72 min-h-48 min-w-72 overflow-y-auto max-h-72 transition-colors duration-300 hover:border-dark-borderHover">
       <div className="flex justify-between items-center">
         <div className="flex items-center text-md group relative overflow-hidden">
-          <h3 className="font-semibold text-lg text-gray-800 truncate w-40">
+          <h3 className="font-display font-semibold text-lg text-white truncate w-40">
             {title}
           </h3>
-          <div className="absolute left-0 top-full mt-1 opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-gray-900 text-white text-xs rounded px-2 py-1 z-10 max-w-xs break-words shadow-lg pointer-events-none">
+          <div className="absolute left-0 top-full mt-1 opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black text-white text-xs rounded px-2 py-1 z-10 max-w-xs break-words shadow-lg pointer-events-none">
             {title}
           </div>
         </div>
@@ -73,7 +66,7 @@ export function Card({
         <div className="flex items-center gap-2">
           <button
             onClick={handleShare}
-            className="text-gray-400 hover:text-purple-600 transition-colors duration-200 cursor-pointer"
+            className="text-gray-500 hover:text-accent transition-colors duration-200 cursor-pointer"
             title="Copy Source Link"
           >
             <SharelinkIcon />
@@ -81,7 +74,7 @@ export function Card({
 
           <button
             onClick={handleDelete}
-            className="text-gray-400 hover:text-red-500 transition-colors duration-200 cursor-pointer"
+            className="text-gray-500 hover:text-red-400 transition-colors duration-200 cursor-pointer"
             title="Delete"
           >
             <DeleteIcon />
@@ -103,7 +96,7 @@ export function Card({
         )}
 
         {type === "twitter" && (
-          <blockquote className="twitter-tweet max-h-48">
+          <blockquote className="twitter-tweet max-h-48" data-theme="dark">
             <a href={link.replace("x.com", "twitter.com")}></a>
           </blockquote>
         )}
@@ -113,12 +106,12 @@ export function Card({
             href={link}
             target="_blank"
             rel="noopener noreferrer"
-            className="block p-4 border rounded-md hover:bg-gray-100 transition border-gray-100"
+            className="block p-4 border border-dark-border rounded-md hover:bg-dark-surfaceAlt transition"
           >
-            <h3 className="font-semibold text-md text-purple-700 underline capitalize">
+            <h3 className="font-semibold text-md text-accent underline capitalize">
               {title}
             </h3>
-            <p className="text-xs text-gray-400 break-all mt-2 italic">
+            <p className="text-xs text-gray-500 break-all mt-2 italic">
               {link}
             </p>
           </a>

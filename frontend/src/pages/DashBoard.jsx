@@ -6,7 +6,7 @@ import { Button } from "../Components/Button";
 import { Card } from "../Components/Cards";
 import { SideBar } from "../Components/SideBar";
 import { CreateContentModal } from "../Components/CreateContentModal";
-import { SearchBar } from "../Components/SearchBar"; 
+import { SearchBar } from "../Components/SearchBar";
 import { AiChatPanel } from "../Components/AiChatPanel";
 
 import { PlusIcon } from "../icons/PlusIcons";
@@ -59,7 +59,7 @@ export function DashBoard() {
       <SideBar />
 
       <div
-        className={`p-4 min-h-screen bg-gray-100 border-2 transition-all duration-300 ${chatOpen ? "ml-72 mr-96" : "ml-72"}`}
+        className={`p-4 min-h-screen bg-dark-bg transition-all duration-300 ${chatOpen ? "ml-72 mr-96" : "ml-72"}`}
       >
         <CreateContentModal
           open={modalOpen}
@@ -79,8 +79,8 @@ export function DashBoard() {
               onClick={() => setChatOpen(!chatOpen)}
               className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition ${
                 chatOpen
-                  ? "bg-purple-600 text-white"
-                  : "bg-white border border-gray-300 text-gray-700 hover:bg-purple-50"
+                  ? "bg-accent text-white"
+                  : "bg-dark-surfaceAlt border border-dark-border text-gray-300 hover:bg-dark-border"
               }`}
             >
               🧠 {chatOpen ? "Close AI" : "Ask AI"}
@@ -102,13 +102,13 @@ export function DashBoard() {
           </div>
         </div>
 
-        <h1 className="text-2xl font-bold capitalize mt-6 text-gray-800">
+        <h1 className="text-2xl font-display font-semibold capitalize mt-6 text-white">
           {contentType ? `${contentType}s` : "All Content"}
         </h1>
 
         <div className="flex gap-4 mt-6 flex-wrap">
           {filteredContents.length === 0 && (
-            <p className="text-gray-500 mt-10 w-full text-center">
+            <p className="text-gray-400 mt-10 w-full text-center">
               {query
                 ? `No results for "${query}"`
                 : `No ${contentType ?? "content"} found. Click "Add Content" to get started!`}

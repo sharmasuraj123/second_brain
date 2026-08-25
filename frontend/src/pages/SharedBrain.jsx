@@ -27,25 +27,25 @@ export function SharedBrain() {
 
   if (loading)
     return (
-      <div className="flex justify-center items-center h-screen">
+      <div className="flex justify-center items-center h-screen bg-dark-bg text-gray-300">
         Loading...
       </div>
     );
   if (error)
     return (
-      <div className="flex justify-center items-center h-screen text-red-500">
+      <div className="flex justify-center items-center h-screen bg-dark-bg text-red-400">
         {error}
       </div>
     );
 
   return (
-    <div className="p-8 min-h-screen bg-gray-100">
-      <h1 className="text-2xl font-bold mb-6 text-purple-600">
+    <div className="p-8 min-h-screen bg-dark-bg">
+      <h1 className="text-2xl font-display font-semibold mb-6 text-accent">
         {username}'s Second Brain
       </h1>
       <div className="flex gap-4 flex-wrap">
         {contents.length === 0 && (
-          <p className="text-gray-500 w-full text-center mt-10">
+          <p className="text-gray-400 w-full text-center mt-10">
             This brain has no shared content yet.
           </p>
         )}

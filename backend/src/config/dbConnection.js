@@ -4,8 +4,7 @@ dotenv.config();
 
 const connectDB = async () => {
   try {
-    const uri =
-      process.env.MONGO_URI || "mongodb://127.0.0.1:27017/second-brain";
+    const uri = "mongodb://127.0.0.1:27017/second-brain";
     await mongoose.connect(uri);
     console.log("MongoDB Connected successfully");
   } catch (error) {

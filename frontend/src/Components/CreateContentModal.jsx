@@ -11,7 +11,7 @@ const ContentType = {
   Twitter: "twitter",
   Link: "link",
   Document: "document",
-  Linkedin: "linkdin",
+  Linkedin: "linkedin",
 };
 
 export function CreateContentModal({ open, onClose }) {
@@ -49,13 +49,13 @@ export function CreateContentModal({ open, onClose }) {
   return (
     <div onClick={onClose}>
       {open && (
-        <div className="z-50 w-screen h-screen bg-slate-500 fixed top-0 left-0 bg-slate-500/60 flex justify-center">
+        <div className="z-50 w-screen h-screen fixed top-0 left-0 bg-black/70 flex justify-center items-center">
           <div
             onClick={(e) => e.stopPropagation()}
-            className=" flex flex-col justify-center"
+            className="flex flex-col justify-center"
           >
-            <span className="bg-white opacity-100 p-4 rounded  ">
-              <div className="flex justify-end">
+            <span className="bg-dark-surface border border-dark-border opacity-100 p-4 rounded-lg shadow-2xl">
+              <div className="flex justify-end text-gray-400 hover:text-white transition-colors">
                 <div onClick={onClose} className="cursor-pointer">
                   <CrossIcon />
                 </div>
@@ -64,7 +64,7 @@ export function CreateContentModal({ open, onClose }) {
                 <Input placeholder={"Title"} reference={titleRef} />
                 <Input placeholder={"Link"} reference={linkRef} />
                 <select
-                  className="px-4 py-2 m-2 rounded border"
+                  className="input-focus input-hover px-4 py-2 m-2 rounded border-2 border-dark-border bg-dark-surfaceAlt text-white transition-all duration-300"
                   value={type}
                   onChange={(e) => setType(e.target.value)}
                 >

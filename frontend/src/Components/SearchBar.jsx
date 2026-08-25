@@ -1,9 +1,9 @@
 export function SearchBar({ query, setQuery, resultsCount, totalCount }) {
   return (
     <div className="relative w-full max-w-md">
-      <div className="flex items-center border border-gray-300 rounded-lg bg-white px-3 py-2 shadow-sm focus-within:ring-2 focus-within:ring-purple-500 focus-within:border-transparent">
+      <div className="flex items-center border-2 border-dark-border rounded-lg bg-dark-surfaceAlt px-3 py-2 focus-within:ring-2 focus-within:ring-accent focus-within:border-transparent transition-all duration-300">
         <svg
-          className="w-4 h-4 text-gray-400 mr-2 shrink-0"
+          className="w-4 h-4 text-gray-500 mr-2 shrink-0"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -21,13 +21,13 @@ export function SearchBar({ query, setQuery, resultsCount, totalCount }) {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Search your brain..."
-          className="flex-1 outline-none text-sm text-gray-700 placeholder-gray-400 bg-transparent"
+          className="flex-1 outline-none text-sm text-white placeholder-gray-500 bg-transparent"
         />
 
         {query && (
           <button
             onClick={() => setQuery("")}
-            className="text-gray-400 hover:text-gray-600 ml-2"
+            className="text-gray-500 hover:text-gray-300 ml-2"
           >
             ✕
           </button>
@@ -35,7 +35,7 @@ export function SearchBar({ query, setQuery, resultsCount, totalCount }) {
       </div>
 
       {query && (
-        <p className="text-xs text-gray-400 mt-1 ml-1">
+        <p className="text-xs text-gray-500 mt-1 ml-1">
           {resultsCount === 0
             ? "No results found"
             : `${resultsCount} of ${totalCount} cards match`}
